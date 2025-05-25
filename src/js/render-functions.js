@@ -3,7 +3,7 @@ import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const loaderEl = document.querySelector('.js-loading-imgs-text');
+const loaderEl = document.querySelector('.js-loader');
 export const loadMoreBtnEl = document.querySelector('.js-load-more-btn');
 export const galleryEl = document.querySelector('.js-gallery');
 

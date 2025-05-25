@@ -77,14 +77,14 @@ main:has(.back-link) {
   background-color: #6c8cff;
 }
 
-.loading-imgs-text.hidden {
+.loader.hidden {
   display: none;
 }
 
 .loading-text-container{
   text-align: center;
 }
-.loading-imgs-text {
+.loader {
   margin: 0 auto;
   font-weight: 400;
   font-size: 16px;
