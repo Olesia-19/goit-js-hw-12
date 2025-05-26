@@ -77,15 +77,32 @@ formEl.addEventListener('submit', async (e) => {
 loadMoreBtnEl.addEventListener('click', async (e) => {
     currentPage++;
 
-    const resultImages = await getImagesByQuery(query, currentPage);
+    try {
+        const resultImages = await getImagesByQuery(query, currentPage);
 
-    const markup = imagesTemplate(resultImages.hits);
-    galleryEl.insertAdjacentHTML('beforeend', markup);
+        const markup = imagesTemplate(resultImages.hits);
+        galleryEl.insertAdjacentHTML('beforeend', markup);
 
-    updateLoadMoreButton();
-    
-    if (currentPage === maxPage) {
-        notifyEndOfResults();
+        refreshLightbox();
+
+        const firstCard = document.querySelector('.gallery-item');
+        if (firstCard) {
+          const { height } = firstCard.getBoundingClientRect();
+          window.scrollBy({
+            top: height * 2,
+            behavior: 'smooth'
+          });
+        }
+
+        updateLoadMoreButton();
+        if (currentPage === maxPage) {
+            notifyEndOfResults();
+        }
+    } catch(error) {
+        iziToast.error({
+            title: 'Error',
+            message: 'Something went wrong. Please try again later.'
+        });
     }
 })
 
